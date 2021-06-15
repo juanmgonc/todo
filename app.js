@@ -1,29 +1,29 @@
 let input;
-let listaTareas;
+let todoList;
 
 window.onload = function() {
-    inicializar();
+    init();
 }
 
-function inicializar() {
-    console.log('Inicializando aplicacion...');
-    input = document.getElementById('nuevaTarea');
-    listaTareas = document.getElementById('listaTareas');
+function init() {
+    console.log('Initializing aplication...');
+    input = document.getElementById('newTodo');
+    todoList = document.getElementById('todoList');
 }
 
-function agregarTarea() {
-    let nuevaTarea = input.value;
+function addTodoItem() {
+    let todoItem = input.value;
+    let todo = document.createElement('P');
+    let btnDelete = document.createElement('BUTTON');
     let item = document.createElement('LI');
-    let tarea = document.createElement('P');
-    let btnBorrar = document.createElement('BUTTON');
-    btnBorrar.setAttribute('onclick', 'eliminarTarea(this)');
-    btnBorrar.innerText = 'Borrar';
-    tarea.innerText = nuevaTarea;
-    item.appendChild(tarea);
-    item.appendChild(btnBorrar);
-    listaTareas.appendChild(item);
+    btnDelete.setAttribute('onclick', 'deleteItem(this)');
+    btnDelete.innerText = 'Borrar';
+    todo.innerText = todoItem;
+    item.appendChild(todo);
+    item.appendChild(btnDelete);
+    todoList.appendChild(item);
 }
 
-function eliminarTarea(tarea) {
-    tarea.parentElement.remove();
+function deleteItem(todo) {
+    todo.parentElement.remove();
 }
